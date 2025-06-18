@@ -1119,7 +1119,7 @@ const HomePage = () => {
       <div className="text-center mt-24">
         <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
         <p className="text-xl mb-8">
-          We'd love to hear from you. Reach out to us with any questions or
+          We&apos;d love to hear from you. Reach out to us with any questions or
           feedback.
         </p>
         <form

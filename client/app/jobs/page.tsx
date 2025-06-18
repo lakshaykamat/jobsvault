@@ -196,17 +196,25 @@ const JobsPage: React.FC = () => {
       {jobData && jobData.totalPages > 1 && (
         <Pagination className="mt-4">
           <PaginationContent>
-            <PaginationItem disabled={currentPage === 1}>
+            <PaginationItem>
               <PaginationPrevious
                 href="#"
-                onClick={() => handlePageChange(currentPage - 1)}
+                onClick={() => {
+                  if (currentPage > 1) handlePageChange(currentPage - 1);
+                }}
+                aria-disabled={currentPage === 1}
+                tabIndex={currentPage === 1 ? -1 : 0}
               />
             </PaginationItem>
             {renderPaginationItems()}
-            <PaginationItem disabled={currentPage == jobData.totalPages}>
+            <PaginationItem>
               <PaginationNext
                 href="#"
-                onClick={() => handlePageChange(currentPage + 1)}
+                onClick={() => {
+                  if (currentPage < jobData.totalPages) handlePageChange(currentPage + 1);
+                }}
+                aria-disabled={currentPage === jobData.totalPages}
+                tabIndex={currentPage === jobData.totalPages ? -1 : 0}
               />
             </PaginationItem>
           </PaginationContent>

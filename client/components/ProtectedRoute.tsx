@@ -1,22 +1,31 @@
 "use client";
+
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/app/context/UserContext";
 
 const WithAuth = (WrappedComponent: React.FC) => {
-  return (props: any) => {
+  const AuthComponent: React.FC = (props) => {
     const { user, loading } = useUser();
     const router = useRouter();
 
-    if (loading) return <div>Loading...</div>; // Show loading indicator
+    React.useEffect(() => {
+      if (!loading && !user) {
+        router.push("/login");
+      }
+    }, [user, loading, router]);
 
-    if (!user) {
-      router.push("/login"); // Redirect to login if user is not authenticated
-      return null;
+    if (loading || !user) {
+      return <div>Loading...</div>;
     }
 
     return <WrappedComponent {...props} />;
   };
+
+  // Set a display name for easier debugging
+  AuthComponent.displayName = `WithAuth(${WrappedComponent.displayName || WrappedComponent.name || "Component"})`;
+
+  return AuthComponent;
 };
 
 export default WithAuth;
