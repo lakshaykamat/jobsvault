@@ -184,8 +184,8 @@ const HomePage = () => {
                 y2="24.75"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0" stop-color="#0081fb" />
-                <stop offset=".995" stop-color="#0064e1" />
+                <stop offset="0" stopColor="#0081fb" />
+                <stop offset=".995" stopColor="#0064e1" />
               </linearGradient>
               <path
                 fill="url(#wSMw7pqi7WIWHewz2_TZXa)"
@@ -199,8 +199,8 @@ const HomePage = () => {
                 y2="13.012"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0" stop-color="#0081fb" />
-                <stop offset=".995" stop-color="#0064e1" />
+                <stop offset="0" stopColor="#0081fb" />
+                <stop offset=".995" stopColor="#0064e1" />
               </linearGradient>
               <path
                 fill="url(#wSMw7pqi7WIWHewz2_TZXb)"
