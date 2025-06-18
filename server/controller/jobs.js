@@ -83,9 +83,9 @@ exports.getJobs = async (req, res) => {
     } = req.query;
     const userId = req.userId;
 
-    const db = getDB();
-    const jobsCollection = db.collection(DATABASE.JOB_PORTAL.COLLECTIONS.JOBS);
-    const usersCollection = db.collection(
+    const db = await getDB();
+    const jobsCollection = await db.collection(DATABASE.JOB_PORTAL.COLLECTIONS.JOBS);
+    const usersCollection = await db.collection(
       DATABASE.JOB_PORTAL.COLLECTIONS.Users
     );
 
