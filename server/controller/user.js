@@ -3,7 +3,7 @@ const { createUser } = require("../models/user");
 const jwt = require("jsonwebtoken");
 const otpGenerator = require("otp-generator");
 const bcrypt = require("bcrypt");
-const sendEmail = require("../config/sendEMail");
+const sendEmail = require("../config/sendEmail");
 const { getRegistrationEmailHtml } = require("../lib/utils");
 
 const getUser = async (req, res) => {
