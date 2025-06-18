@@ -1,8 +1,9 @@
 // lib/axiosInstance.ts
 import axios, { AxiosInstance } from "axios";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000"
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:8000", // Set your API base URL here
+  baseURL: API_URL, // Set your API base URL here
   headers: {
     "Content-Type": "application/json",
   },
