@@ -39,8 +39,9 @@ app.set("views", path.join(__dirname, "views"));
 // Serve static files (optional)
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/",(req,res)=>{res.status(200).send("Hello World!")})
 // Example route
-app.get("/", async (req, res) => {
+app.get("/stats", async (req, res) => {
   const jobs = await getDB()
     .collection(DATABASE.JOB_PORTAL.COLLECTIONS.JOBS)
     .find()
@@ -48,13 +49,19 @@ app.get("/", async (req, res) => {
   const indeedJobs = await jobs.filter((job) => job.source == "indeed.com");
   const linkedInJobs = await jobs.filter((job) => job.source == "linkedin.com");
   const naukriJobs = await jobs.filter((job) => job.source == "naukri.com");
-  res.render("index", {
-    title: "My Job Portal",
-    jobsLength: jobs.length,
-    indeedJobs,
-    linkedInJobs,
-    naukriJobs,
-  });
+  // res.render("index", {
+  //   title: "My Job Portal",
+  //   jobsLength: jobs.length,
+  //   indeedJobs,
+  //   linkedInJobs,
+  //   naukriJobs,
+  // });
+  const str = `Indeed:${indeedJobs.length}\nLinkedIn:${
+    linkedInJobs.length
+  }\n\nNaukri:${naukriJobs.length}\n\nTotal:${
+    indeedJobs.length + linkedInJobs.length + naukriJobs.length
+  }`;
+  res.status(200).send(str);
 });
 
 const limiter = rateLimit({
